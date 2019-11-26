@@ -28,8 +28,8 @@ function draw() {
   noStroke();
   // fill(0, 255, 0);
   // translate (0, 0, 300);
-  rotateX(pmouseY/100);
-  rotateY(pmouseX/100);
+  rotateX(pmouseY/80);
+  rotateY(pmouseX/80);
   // rotateZ(angle);
   // rect(0, 0, 250, 250);
   // torus(100, 50);
