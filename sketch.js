@@ -1,8 +1,10 @@
-var angle=0;
-var hand;
+var x, y, z;
+var xpos, ypos;
+var angle = 0;
+let hand;
 
 function preload() {
- hand = loadModel ('assets/ ok_hand.obj'); 
+  hand = loadModel('ok_hand.obj', true);
 }
 
 
@@ -12,64 +14,66 @@ function setup() {
 
 function draw() {
   background(0);
-  scale(0.5);
-  
-  let camX =  map(mouseX, 0, width, -500, 1000);
+
+  pointLight(255, 0, 0, 300, 0, 0);
+  pointLight(0, 0, 255, -300, 0, 0);
+  pointLight(0, 255, 0, 0, -300, 0);
+
+  let camX = map(mouseX, 0, width, -500, 1000);
   let camY = map(mouseY, 0, height, 500, -600);
-  camera (camX, camY, (height/2)/tan(PI/6), 0, 0, 0, 0, 1, 0);
-  
-  	push();
+  camera(camX, camY, (height / 2) / tan(PI / 6), 0, 0, 0, 0, 1, 0);
 
-	// noStroke();
-	  	// fill(0, 255, 0);
-	  	// translate (0, 0, 300);
-	  	rotateX(angle* 0.2);
-	  	rotateY(angle * 0.2);
-	  	rotateZ(angle * 0.2);
-		// rect(0, 0, 250, 250);
-		// torus(100, 50);
-		normalMaterial();
-	  	model(hand);
+  push();
+  scale(2.5);
 
-  	pop();
-  
-	push();
-	// noStroke();
- 		translate (0, 400, 0);
- 		rotateX(HALF_PI);
-  		fill (175);
-  		plane(1000, 1000);
-	pop();
+  noStroke();
+  // fill(0, 255, 0);
+  // translate (0, 0, 300);
+  rotateX(angle);
+  rotateY(angle);
+  rotateZ(angle);
+  // rect(0, 0, 250, 250);
+  // torus(100, 50);
+  specularMaterial(255);
+  model(hand);
 
-	push();
-	// noStroke();
-		translate (0, -100, -500);
-		rotateZ(HALF_PI);
-		fill(175);
-		plane(1000, 1000); 
+  pop();
 
-	pop();
-  
-  	push();
-	// noStroke();
-		translate (-500, -100, 0);
-		rotateY(HALF_PI);
-		fill(175);
-		plane(1000, 1000); 
+  push();
+  noStroke();
+  translate(0, 400, 0);
+  rotateX(HALF_PI);
+  plane(1000, 1000);
+  ambientMaterial(175);
+  pop();
 
-	pop();
+  push();
+  noStroke();
+  translate(0, -100, -500);
+  rotateZ(HALF_PI);
+  plane(1000, 1000);
+  ambientMaterial(175);
+  pop();
 
-  	angle+= 0.08;
+  push();
+  noStroke();
+  translate(-500, -100, 0);
+  rotateY(HALF_PI);
+  plane(1000, 1000);
+  ambientMaterial(175);
+  pop();
 
-  
-  
-  
-// // accelerometer Data
-// window.addEventListener('devicemotion', function(e) 
-// {
-// //   // get accelerometer values
-//   x = parseInt(e.accelerationIncludingGravity.x);
-//   y = parseInt(e.accelerationIncludingGravity.y);
-//   z = parseInt(e.accelerationIncludingGravity.z); 
-// });
+  angle += 0.012;
+
+
+
+
+  // accelerometer Data
+  window.addEventListener('devicemotion', function(e) 
+  {
+  //   // get accelerometer values
+    x = parseInt(e.accelerationIncludingGravity.x);
+    y = parseInt(e.accelerationIncludingGravity.y);
+    z = parseInt(e.accelerationIncludingGravity.z); 
+  });
 }
