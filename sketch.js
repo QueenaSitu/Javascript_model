@@ -1,5 +1,5 @@
 
-let hand;
+var hand;
 
 
 function preload() {
